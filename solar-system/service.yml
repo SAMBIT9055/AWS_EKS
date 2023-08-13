@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: service
+metadata: 
+  name: Solar-System-Service
+  label:
+  app: Solar-System
+spec:
+  selector:
+    matchLabels:
+      app: Solar-System
+  ports:
+    - port: 80
+      targetport: 80
+      nodePort: 30007
+  type: NodePort   
