@@ -1,15 +1,12 @@
 apiVersion: v1
-kind: service
-metadata: 
-  name: Solar-System-Service
-  label:
-  app: Solar-System
+kind: Service
+metadata:
+  name: nginx-service
 spec:
   selector:
-    matchLabels:
-      app: Solar-System
+    app.kubernetes.io/name: proxy
   ports:
-    - port: 80
-      targetport: 80
-      nodePort: 30017
-  type: NodePort   
+  - name: name-of-service-port
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc
