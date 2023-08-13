@@ -1,22 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: Solar-System-Deployment
-  label:
-    app: Solar-System
+  name: nginx
+  labels:
+    app.kubernetes.io/name: proxy
 spec:
-  replicas: 2
-  selcector:
-    matchLabels:
-      app: Solar-System
-  template:
-    metadata:
-      labels:
-        app: Solar-System
-    spec:
-      containers:
-        name: Solar-System-container
-        image: siddharth67/solar-system
-        imagePullPolicy: Always
-        ports:
-          containerPort: 80
+  containers:
+  - name: nginx
+    image: nginx:stable
+    ports:
+      - containerPort: 80
+        name: http-web-svc
