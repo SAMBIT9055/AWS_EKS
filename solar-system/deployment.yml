@@ -1,5 +1,5 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: solar-system-deployment
   label:
@@ -15,8 +15,8 @@ spec:
         app: solar-system
     spec:
       containers:
-        name: solar-system-container
-        image: siddharth67/solar-system
-        imagePullPolicy: Always
-        ports:
-          containerPort: 80
+        - name: solar-system-container
+          image: siddharth67/solar-system
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
